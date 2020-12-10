@@ -1,5 +1,7 @@
 import { mount } from '@vue/test-utils'
-import SchemaForm, { NumberField, StringField, ObjectField } from '../../lib'
+import { NumberField, StringField, ObjectField } from '../../lib'
+import TestComponent from './utils/TestComponent'
+
 describe('ObjectFiled.spec.ts', () => {
   let schema: any
   beforeEach(() => {
@@ -16,7 +18,7 @@ describe('ObjectFiled.spec.ts', () => {
     }
   })
   it('should render properties to correct fileds', async () => {
-    const wrapper = mount(SchemaForm, {
+    const wrapper = mount(TestComponent, {
       props: {
         schema,
         value: {},
@@ -34,7 +36,7 @@ describe('ObjectFiled.spec.ts', () => {
 
   it('should change value when sub fields trigger onChange', async () => {
     let value: any = {}
-    const wrapper = mount(SchemaForm, {
+    const wrapper = mount(TestComponent, {
       props: {
         schema,
         value,
@@ -56,11 +58,11 @@ describe('ObjectFiled.spec.ts', () => {
     let value: any = {
       name: 123,
     }
-    const wrapper = mount(SchemaForm, {
+    const wrapper = mount(TestComponent, {
       props: {
         schema,
         value,
-        onChange: (v) => {
+        onChange: (v: any) => {
           value = v
         },
       },
@@ -72,11 +74,11 @@ describe('ObjectFiled.spec.ts', () => {
 
   it('should props value default isObject', async () => {
     let value: any
-    const wrapper = mount(SchemaForm, {
+    const wrapper = mount(TestComponent, {
       props: {
         schema,
         value,
-        onChange: (v) => {
+        onChange: (v: any) => {
           value = v
         },
       },
@@ -88,13 +90,13 @@ describe('ObjectFiled.spec.ts', () => {
 
   it('should props schema properties is not define', async () => {
     let value: any
-    const wrapper = mount(SchemaForm, {
+    const wrapper = mount(TestComponent, {
       props: {
         schema: {
           type: 'object',
         },
         value,
-        onChange: (v) => {
+        onChange: (v: any) => {
           value = v
         },
       },
