@@ -2,6 +2,8 @@
 
 # API 设计
 
+![Coverage](https://www.baidu.com)
+
 ```jsx
 <JsonSchemaForm
   schema={schema}
